@@ -60,7 +60,9 @@ their interface.
 
 **Note:** _Remember to restart the app when the configuration is changed._
 
-**Note:** _This is just an example, not even the default, don't copy and paste it! Create your own!_
+**Note:** _This is just an example, not even the default, don't copy and paste
+it! Create your own!_
+
 ```yaml
 accept_dns: true
 accept_routes: false
