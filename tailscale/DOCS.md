@@ -48,6 +48,19 @@ their interface.
 
 <https://login.tailscale.com/>
 
+1. Navigate to the [Machines page][tailscale_machines] of the admin console, and
+   find your Home Assistant instance.
+
+1. Click on the **&hellip;** icon at the right side and select the "Edit route
+   settings..." option. The "Exit node" and "Subnet routes" functions can be
+   enabled here.
+
+1. Click on the **&hellip;** icon at the right side and select the "Disable key
+   expiry" option.
+
+**Note:** _Remember to restart the app when the configuration is changed._
+
+**Note:** _This is just an example, not even the default, don't copy and paste it! Create your own!_
 ```yaml
 accept_dns: true
 accept_routes: false
@@ -256,6 +269,10 @@ your tailnet domain.
 This can prevent browsers from warning that HTTP URLs to your Home Assistant
 instance look unencrypted (browsers are not aware that the connections between
 Tailscale nodes are secured with end-to-end encryption).
+
+**Note:** Tailscale Serve and Funnel will automatically update the certificate
+before expiration, unlike the `tailscale cert` command. Follow the steps in this
+documentation below to set up Serve or Funnel properly.
 
 With the Tailscale Serve feature, you can access your Home Assistant instance
 with the provided certificate within your tailnet from devices already connected
