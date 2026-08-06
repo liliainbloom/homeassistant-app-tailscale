@@ -304,26 +304,23 @@ More information: [Enabling HTTPS][tailscale_info_https],
 [Tailscale Serve][tailscale_info_serve], [Tailscale Funnel][tailscale_info_funnel].
 
 1. Configure Home Assistant to be accessible through an HTTP connection (this is
-   the default). See [HTTP integration documentation][http_integration] for more
-   information.
+   the default). In Home Assistant 2026.8 and newer, go to **Settings** ->
+   **System** -> **Network** -> **HTTP server** -> **SSL/TLS** and leave SSL/TLS
+   disabled.
 
    **Note:** If you want to use another HTTPS connection to access Home
-   Assistant, though Tailscale can access Home Assistant even if Home Assistant
-   is using SSL and is accessible through an HTTPS connection, please use a
-   reverse proxy app for that HTTPS connection instead of configuring Home
-   Assistant to use SSL.
+   Assistant, use a reverse proxy app for that connection instead of enabling
+   SSL directly in Home Assistant. The app remains compatible with existing
+   Home Assistant SSL configurations, but the extra local encryption is
+   unnecessary and adds overhead.
 
 1. Home Assistant, by default, blocks requests from reverse proxies, like the
-   Tailscale Serve. To enable it, add the following lines to your
-   `configuration.yaml`, without changing anything (don't forget to restart Home
-   Assistant after the changes are saved):
+   Tailscale Serve. To enable it, go to **Settings** -> **System** ->
+   **Network** -> **HTTP server** -> **Reverse proxy** and edit the options
+   below (don't forget to restart Home Assistant after the changes are saved):
+   - Enable `Trust X-Forwarded-For` option.
 
-   ```yaml
-   http:
-     use_x_forwarded_for: true
-     trusted_proxies:
-       - 127.0.0.1
-   ```
+   - Add "127.0.0.1" to the `Trusted proxies` option.
 
 1. Navigate to the [DNS page][tailscale_dns] of the admin console:
    - Choose a tailnet name.
@@ -544,7 +541,6 @@ SOFTWARE.
 [forum]: https://community.home-assistant.io/?u=frenck
 [frenck]: https://github.com/frenck
 [headscale]: https://github.com/juanfont/headscale
-[http_integration]: https://www.home-assistant.io/integrations/http/
 [issue]: https://github.com/hassio-addons/app-tailscale/issues
 [reddit]: https://reddit.com/r/homeassistant
 [releases]: https://github.com/hassio-addons/app-tailscale/releases
