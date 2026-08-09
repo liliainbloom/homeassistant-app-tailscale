@@ -11,6 +11,12 @@ declare proxy funnel proxy_and_funnel_port
 declare share_service_name
 declare tags
 
+readonly MAGIC_DNS_IPV4="100.100.100.100"
+readonly MAGIC_DNS_IPV6="fd7a:115c:a1e0::53"
+declare dns
+declare invalid_dns_config
+declare userspace_networking
+
 # This is to execute potentially failing supervisor api functions within conditions,
 # where set -e is not propagated inside the function and bashio relies on set -e for api error handling
 function try {
@@ -81,6 +87,30 @@ if bashio::var.has_value "${share_service_name}"; then
     bashio::addon.option 'share_service_name'
 fi
 
+# Home Assistant's local DNS forwarding must not point back to MagicDNS. Doing
+# so creates a DNS loop before the proxy services can start. Fall back to
+# userspace networking so the app remains reachable and the configuration can
+# be corrected from Home Assistant.
+userspace_networking=$(bashio::config "userspace_networking")
+invalid_dns_config="false"
+for dns in $(bashio::dns.locals); do
+    if bashio::var.equals "${dns}" "dns://${MAGIC_DNS_IPV4}" || \
+        bashio::var.equals "${dns}" "dns://${MAGIC_DNS_IPV6}"
+    then
+        bashio::log.warning \
+            "Do not configure MagicDNS's IP address (${dns:6}) as DNS server under Settings -> System -> Network"
+        invalid_dns_config="true"
+    fi
+done
+if bashio::var.true "${invalid_dns_config}"; then
+    bashio::log.warning \
+        "Due to the invalid networking DNS configuration, userspace_networking will be enabled to disable MagicDNS"
+    bashio::log.warning \
+        "Please check the app documentation's DNS section, then disable userspace_networking and restart the app"
+    bashio::app.option 'userspace_networking' 'true'
+    userspace_networking="true"
+fi
+
 # MagicDNS related service dependencies:
 #
 #   user
@@ -99,7 +129,7 @@ fi
 #   ˅  ˅
 #   init-magicdns-proxies
 #
-if bashio::config.true "userspace_networking"; then
+if bashio::var.true "${userspace_networking}"; then
     # Disable MagicDNS egress and ingress proxy related services when userspace_networking is enabled
     rm /etc/s6-overlay/s6-rc.d/user/contents.d/magicdns-proxies-reconfigurator
     rm /etc/s6-overlay/s6-rc.d/user/contents.d/magicdns-ingress-proxy
@@ -110,7 +140,7 @@ elif bashio::config.false "accept_dns"; then
 fi
 
 # Disable protect-subnets service when userspace-networking is enabled or accepting routes is disabled
-if bashio::config.true "userspace_networking" || \
+if bashio::var.true "${userspace_networking}" || \
     bashio::config.false "accept_routes";
 then
     rm /etc/s6-overlay/s6-rc.d/post-tailscaled/dependencies.d/protect-subnets
@@ -122,12 +152,12 @@ if ! bashio::config "advertise_routes" | grep -Fxq "local_subnets"; then
 fi
 
 # Disable forwarding service when userspace-networking is enabled
-if bashio::config.true "userspace_networking"; then
+if bashio::var.true "${userspace_networking}"; then
     rm /etc/s6-overlay/s6-rc.d/user/contents.d/forwarding
 fi
 
 # Disable mss-clamping service when userspace-networking is enabled
-if bashio::config.true "userspace_networking"; then
+if bashio::var.true "${userspace_networking}"; then
     rm /etc/s6-overlay/s6-rc.d/user/contents.d/mss-clamping
 fi
 
