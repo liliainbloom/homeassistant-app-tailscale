@@ -9,6 +9,7 @@ export LOG_FD
 declare options
 declare proxy funnel proxy_and_funnel_port
 declare share_service_name
+declare taildrive_config taildrive_legacy
 declare tags
 
 readonly MAGIC_DNS_IPV4="100.100.100.100"
@@ -52,6 +53,21 @@ if bashio::var.has_value "${proxy_and_funnel_port}"; then
     else
         bashio::log.info "Successfully migrated proxy_and_funnel_port option to share_on_port: ${proxy_and_funnel_port}"
     fi
+fi
+
+# Migrate the former add-on directory names to Home Assistant's app terminology.
+# Keep the supported Supervisor mount types; config.yaml maps those mounts to
+# the new paths explicitly.
+taildrive_legacy=$(bashio::jq "${options}" \
+    '(.taildrive // {}) | (has("addons") or has("addon_configs"))')
+if bashio::var.true "${taildrive_legacy}"; then
+    taildrive_config=$(bashio::jq "${options}" '
+        (.taildrive // {})
+        | if has("addons") and (has("local_apps") | not) then .local_apps = .addons else . end
+        | if has("addon_configs") and (has("app_configs") | not) then .app_configs = .addon_configs else . end
+        | del(.addons, .addon_configs)')
+    bashio::app.option 'taildrive' "^${taildrive_config}"
+    bashio::log.info 'Successfully migrated Taildrive share names to local_apps and app_configs'
 fi
 # Remove previous options
 if bashio::var.has_value "${proxy}"; then

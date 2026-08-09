@@ -25,8 +25,10 @@ devices:
 map:
   - type: addons
     read_only: false
+    path: /local_apps
   - type: all_addon_configs
     read_only: false
+    path: /app_configs
   - type: backup
     read_only: false
   - type: homeassistant_config
@@ -56,8 +58,8 @@ options:
   snat_subnet_routes: true
   stateful_filtering: false
   taildrive:
-    addons: false
-    addon_configs: false
+    local_apps: false
+    app_configs: false
     backup: false
     config: false
     media: false
@@ -84,8 +86,8 @@ schema:
   snat_subnet_routes: bool
   stateful_filtering: bool
   taildrive:
-    addons: bool
-    addon_configs: bool
+    local_apps: bool
+    app_configs: bool
     backup: bool
     config: bool
     media: bool
