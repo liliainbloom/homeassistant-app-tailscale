@@ -43,6 +43,21 @@ their diffs, reviews, CI state, overlap, and runtime interactions.
 | [#722](https://github.com/hassio-addons/app-tailscale/pull/722) | Adapted    | Keeps the intended `local_apps`/`app_configs` Taildrive names and migration, but retains Supervisor-supported map types (`addons` and `all_addon_configs`) with explicit new mount paths. The PR's proposed map types fail Home Assistant app lint. Deprecated shares are removed before replacements are created. |
 | [#727](https://github.com/hassio-addons/app-tailscale/pull/727) | Integrated | Updates Serve setup for the Home Assistant 2026.8 networking UI. Combined with #702 so the recommended HTTP setup and compatibility with existing SSL installations are both documented accurately.                                                                                                                |
 
+## Integrated pull-request credits
+
+Fork integration and adaptations are by
+[`liliainbloom`](https://github.com/liliainbloom). Complete and partial PR
+integrations are credited to their upstream authors:
+
+- [Laszlo Magyar (`@lmagyar`)](https://github.com/lmagyar): #585, #662, #663,
+  #667, #669, #671, #673, #680, #681, #703, #708, #722, and #727.
+- [Sebestyén Bálint (`@dynamyc010`)](https://github.com/dynamyc010): #702.
+- [Renovate](https://github.com/apps/renovate): #700.
+
+Directly applied commits retain their original Git authorship, including
+Franck Nijhof's contribution to #585. The original project and full upstream
+contributor history remain credited in the README and Git history.
+
 ## High-risk interaction groups checked
 
 - **MagicDNS and startup:** #662, #667, and #681 share configuration and service

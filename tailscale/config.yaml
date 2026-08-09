@@ -3,7 +3,7 @@ name: Tailscale (liliainbloom's Fork)
 version: dev
 slug: tailscale
 description: Tailscale VPN app for Home Assistant maintained by liliainbloom
-url: https://github.com/liliainbloom/app-tailscale
+url: https://github.com/liliainbloom/homeassistant-app-tailscale
 ingress: true
 ingress_port: 0
 ingress_stream: true

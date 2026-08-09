@@ -1,7 +1,7 @@
 # Contributing
 
 Please discuss non-trivial changes in a
-[fork issue](https://github.com/liliainbloom/app-tailscale/issues) before opening
+[fork issue](https://github.com/liliainbloom/homeassistant-app-tailscale/issues) before opening
 a pull request. Search existing issues and pull requests first.
 
 Pull requests should:

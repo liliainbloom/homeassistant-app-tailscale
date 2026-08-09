@@ -31,7 +31,7 @@ fork—to Home Assistant:
 
 1. In Home Assistant, open **Settings** -> **Apps** -> **App store**.
 1. Open the app-store menu, choose **Repositories**, and add
-   `https://github.com/liliainbloom/app-tailscale`.
+   `https://github.com/liliainbloom/homeassistant-repository`.
 1. Install **Tailscale (liliainbloom's Fork)**.
 1. Start the app.
 1. Check the logs of the "Tailscale" app to see if everything went well.
@@ -502,13 +502,13 @@ This fork is distributed under the [MIT License][license] and retains the
 original copyright and permission notice.
 
 [contributors]: https://github.com/hassio-addons/app-tailscale/graphs/contributors
-[fork-notes]: https://github.com/liliainbloom/app-tailscale/blob/main/FORK_NOTES.md
+[fork-notes]: https://github.com/liliainbloom/homeassistant-app-tailscale/blob/main/FORK_NOTES.md
 [forum]: https://community.home-assistant.io/
 [frenck]: https://github.com/frenck
 [headscale]: https://github.com/juanfont/headscale
-[issue]: https://github.com/liliainbloom/app-tailscale/issues
-[license]: https://github.com/liliainbloom/app-tailscale/blob/main/LICENSE.md
-[releases]: https://github.com/liliainbloom/app-tailscale/releases
+[issue]: https://github.com/liliainbloom/homeassistant-app-tailscale/issues
+[license]: https://github.com/liliainbloom/homeassistant-app-tailscale/blob/main/LICENSE.md
+[releases]: https://github.com/liliainbloom/homeassistant-app-tailscale/releases
 [tailscale_acls]: https://console.tailscale.com/admin/acls
 [tailscale_dns]: https://console.tailscale.com/admin/dns
 [tailscale_info_app_connectors]: https://tailscale.com/docs/features/app-connectors
