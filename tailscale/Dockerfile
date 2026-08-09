@@ -39,8 +39,7 @@ RUN \
 # Copy root filesystem
 COPY rootfs /
 
-HEALTHCHECK \
-    CMD healthcheck
+HEALTHCHECK CMD ["healthcheck"]
 
 # S6 Overlay stage 2 hook
 ENV S6_STAGE2_HOOK=/etc/s6-overlay/scripts/stage2_hook.sh
@@ -61,13 +60,13 @@ LABEL \
     io.hass.arch="${BUILD_ARCH}" \
     io.hass.type="addon" \
     io.hass.version=${BUILD_VERSION} \
-    maintainer="Franck Nijhof <opensource@frenck.dev>" \
+    maintainer="liliainbloom <306726302+liliainbloom@users.noreply.github.com>" \
     org.opencontainers.image.title="${BUILD_NAME}" \
     org.opencontainers.image.description="${BUILD_DESCRIPTION}" \
-    org.opencontainers.image.vendor="Home Assistant Community Apps" \
-    org.opencontainers.image.authors="Franck Nijhof <opensource@frenck.dev>" \
+    org.opencontainers.image.vendor="liliainbloom" \
+    org.opencontainers.image.authors="Franck Nijhof and contributors; maintained by liliainbloom" \
     org.opencontainers.image.licenses="MIT" \
-    org.opencontainers.image.url="https://frenck.dev/home-assistant-apps" \
+    org.opencontainers.image.url="https://github.com/${BUILD_REPOSITORY}" \
     org.opencontainers.image.source="https://github.com/${BUILD_REPOSITORY}" \
     org.opencontainers.image.documentation="https://github.com/${BUILD_REPOSITORY}/blob/main/README.md" \
     org.opencontainers.image.created=${BUILD_DATE} \

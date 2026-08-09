@@ -1,4 +1,8 @@
-# Home Assistant Community App: Tailscale
+# Tailscale for Home Assistant — liliainbloom's Fork
+
+> [!IMPORTANT]
+> This is liliainbloom's unofficial fork. It is not supported by Tailscale,
+> Home Assistant, or the upstream Home Assistant Community Apps maintainers.
 
 Tailscale is a zero config VPN, which installs on any device in minutes,
 including your Home Assistant instance.
@@ -22,13 +26,14 @@ however, it is nice to know where you need to go later on.
 
 ## Installation
 
-1. Click the Home Assistant My button below to open the app on your Home
-   Assistant instance.
+This is the source repository. Add the companion app repository—not this source
+fork—to Home Assistant:
 
-   [![Open this app in your Home Assistant instance.][app-badge]][app]
-
-1. Click the "Install" button to install the app.
-1. Start the "Tailscale" app.
+1. In Home Assistant, open **Settings** -> **Apps** -> **App store**.
+1. Open the app-store menu, choose **Repositories**, and add
+   `https://github.com/liliainbloom/app-tailscale`.
+1. Install **Tailscale (liliainbloom's Fork)**.
+1. Start the app.
 1. Check the logs of the "Tailscale" app to see if everything went well.
 1. Open the Web UI of the "Tailscale" app to complete authentication and
    couple your Home Assistant instance with your Tailscale account.
@@ -36,7 +41,7 @@ however, it is nice to know where you need to go later on.
    complete this step on a desktop or laptop computer using the Chrome browser.
 1. Check the logs of the "Tailscale" app again, to see if everything went
    well.
-1. Done!
+1. Check the logs again and confirm that the app reports a running state.
 
 ## Configuration
 
@@ -476,75 +481,34 @@ some-tailnet-device` does not work.
 
 ## Changelog & Releases
 
-This repository keeps a change log using [GitHub's releases][releases]
-functionality.
-
-Releases are based on [Semantic Versioning][semver], and use the format
-of `MAJOR.MINOR.PATCH`. In a nutshell, the version will be incremented
-based on the following:
-
-- `MAJOR`: Incompatible or major changes.
-- `MINOR`: Backwards-compatible new features and enhancements.
-- `PATCH`: Backwards-compatible bugfixes and package updates.
+Fork releases and their notes are published on the
+[GitHub releases page][releases]. The upstream baseline and pull-request audit
+are recorded in [FORK_NOTES.md][fork-notes].
 
 ## Support
 
-Got questions?
-
-You have several options to get them answered:
-
-- The [Home Assistant Community Apps Discord chat server][discord] for app
-  support and feature requests.
-- The [Home Assistant Discord chat server][discord-ha] for general Home
-  Assistant discussions and questions.
-- The Home Assistant [Community Forum][forum].
-- Join the [Reddit subreddit][reddit] in [/r/homeassistant][reddit]
-
-You could also [open an issue here][issue] GitHub.
+For fork-specific bugs and feature requests, [open an issue][issue] in this
+repository. General Home Assistant questions belong in the
+[Home Assistant community forum][forum].
 
 ## Authors & contributors
 
-The original setup of this repository is by [Franck Nijhof][frenck].
-
-For a full list of all authors and contributors,
-check [the contributor's page][contributors].
+This fork is based on the original project by [Franck Nijhof][frenck] and the
+[upstream contributors][contributors]. Original commit authorship is retained.
 
 ## License
 
-MIT License
+This fork is distributed under the [MIT License][license] and retains the
+original copyright and permission notice.
 
-Copyright (c) 2021-2026 Franck Nijhof
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-[app-badge]: https://my.home-assistant.io/badges/supervisor_addon.svg
-[app]: https://my.home-assistant.io/redirect/supervisor_addon/?addon=a0d7b954_tailscale&repository_url=https%3A%2F%2Fgithub.com%2Fhassio-addons%2Frepository
 [contributors]: https://github.com/hassio-addons/app-tailscale/graphs/contributors
-[discord-ha]: https://www.home-assistant.io/join-chat
-[discord]: https://discord.me/hassioaddons
-[forum]: https://community.home-assistant.io/?u=frenck
+[fork-notes]: https://github.com/liliainbloom/app-tailscale/blob/main/FORK_NOTES.md
+[forum]: https://community.home-assistant.io/
 [frenck]: https://github.com/frenck
 [headscale]: https://github.com/juanfont/headscale
-[issue]: https://github.com/hassio-addons/app-tailscale/issues
-[reddit]: https://reddit.com/r/homeassistant
-[releases]: https://github.com/hassio-addons/app-tailscale/releases
-[semver]: https://semver.org/spec/v2.0.0.html
+[issue]: https://github.com/liliainbloom/app-tailscale/issues
+[license]: https://github.com/liliainbloom/app-tailscale/blob/main/LICENSE.md
+[releases]: https://github.com/liliainbloom/app-tailscale/releases
 [tailscale_acls]: https://console.tailscale.com/admin/acls
 [tailscale_dns]: https://console.tailscale.com/admin/dns
 [tailscale_info_app_connectors]: https://tailscale.com/docs/features/app-connectors

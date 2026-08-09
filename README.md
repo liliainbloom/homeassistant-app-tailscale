@@ -1,122 +1,54 @@
-# Home Assistant Community App: Tailscale
+# Tailscale for Home Assistant — liliainbloom's Fork
 
-[![GitHub Release][releases-shield]][releases]
-![Project Stage][project-stage-shield]
-[![License][license-shield]](LICENSE.md)
+[![CI](https://github.com/liliainbloom/app-tailscale/actions/workflows/ci.yaml/badge.svg)](https://github.com/liliainbloom/app-tailscale/actions/workflows/ci.yaml)
+[![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md)
 
-![Supports aarch64 Architecture][aarch64-shield]
-![Supports amd64 Architecture][amd64-shield]
+> [!IMPORTANT]
+> This is liliainbloom's unofficial fork of
+> [hassio-addons/app-tailscale](https://github.com/hassio-addons/app-tailscale).
+> It is not supported by Tailscale, Home Assistant, or the upstream maintainers.
 
-[![Github Actions][github-actions-shield]][github-actions]
-![Project Maintenance][maintenance-shield]
-[![GitHub Activity][commits-shield]][commits]
+Run Tailscale on Home Assistant to connect the host and its local networks to a
+tailnet. The app supports `aarch64` and `amd64` Home Assistant systems.
 
-[![Discord][discord-shield]][discord]
-[![Community Forum][forum-shield]][forum]
+## What is in this fork?
 
-[![Sponsor Frenck via GitHub Sponsors][github-sponsors-shield]][github-sponsors]
+This fork keeps the upstream `v0.28.1` lineage, incorporates the useful changes
+from the upstream `main` branch, and packages Tailscale `1.102.2`—the current
+stable release when the fork was audited on 2026-08-09.
 
-[![Support Frenck on Patreon][patreon-shield]][patreon]
+The open upstream pull requests were reviewed individually. Compatible fixes
+were integrated, interacting changes were reconciled, and unfinished or unsafe
+changes were left out. See [FORK_NOTES.md](FORK_NOTES.md) for the complete audit
+and decision record.
 
-Zero config VPN for building secure networks.
+## Installation
 
-## About
+This is the source repository. Add the companion app repository—not this source
+fork—to Home Assistant:
 
-Tailscale is a zero config VPN, which installs on any device in minutes,
-including your Home Assistant instance.
+1. In Home Assistant, open **Settings** -> **Apps** -> **App store**.
+2. Open the app-store menu, choose **Repositories**, and add:
+   `https://github.com/liliainbloom/app-tailscale`
+3. Install **Tailscale (liliainbloom's Fork)**.
+4. Start the app and use its Web UI to authenticate with Tailscale.
 
-Create a secure network between your servers, computers, and cloud instances.
-Even when separated by firewalls or subnets, Tailscale just works. Tailscale
-manages firewall rules for you, and works from anywhere you are.
+Read the [app documentation](tailscale/DOCS.md) before enabling subnet routing,
+an exit node, Serve/Funnel, MagicDNS, Taildrop, or Taildrive.
 
-[:books: Read the full app documentation][docs]
+## Support and upstream
 
-## Support
+Report fork-specific problems in this fork's
+[issue tracker](https://github.com/liliainbloom/app-tailscale/issues). When an
+issue also affects the unmodified upstream app, include that fact and a minimal
+reproduction so it can be evaluated upstream separately.
 
-Got questions?
-
-You have several options to get them answered:
-
-- The [Home Assistant Community Apps Discord chat server][discord] for app
-  support and feature requests.
-- The [Home Assistant Discord chat server][discord-ha] for general Home
-  Assistant discussions and questions.
-- The Home Assistant [Community Forum][forum].
-- Join the [Reddit subreddit][reddit] in [/r/homeassistant][reddit]
-
-You could also [open an issue here][issue] GitHub.
-
-## Contributing
-
-This is an active open-source project. We are always open to people who want to
-use the code or contribute to it.
-
-We have set up a separate document containing our
-[contribution guidelines](.github/CONTRIBUTING.md).
-
-Thank you for being involved! :heart_eyes:
-
-## Authors & contributors
-
-The original setup of this repository is by [Franck Nijhof][frenck].
-
-For a full list of all authors and contributors,
-check [the contributor's page][contributors].
-
-## We have got some Home Assistant apps for you
-
-Want some more functionality to your Home Assistant instance?
-
-We have created multiple apps for Home Assistant. For a full list, check out
-our [GitHub Repository][repository].
+The original project and its contributor history remain available at
+[hassio-addons/app-tailscale](https://github.com/hassio-addons/app-tailscale)
+and the [upstream contributors page](https://github.com/hassio-addons/app-tailscale/graphs/contributors).
 
 ## License
 
-MIT License
-
-Copyright (c) 2021-2026 Franck Nijhof
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-[aarch64-shield]: https://img.shields.io/badge/aarch64-yes-green.svg
-[amd64-shield]: https://img.shields.io/badge/amd64-yes-green.svg
-[commits-shield]: https://img.shields.io/github/commit-activity/y/hassio-addons/app-tailscale.svg
-[commits]: https://github.com/hassio-addons/app-tailscale/commits/main
-[contributors]: https://github.com/hassio-addons/app-tailscale/graphs/contributors
-[discord-ha]: https://discord.gg/c5DvZ4e
-[discord-shield]: https://img.shields.io/discord/478094546522079232.svg
-[discord]: https://discord.me/hassioaddons
-[docs]: https://github.com/hassio-addons/app-tailscale/blob/main/tailscale/DOCS.md
-[forum-shield]: https://img.shields.io/badge/community-forum-brightgreen.svg
-[forum]: https://community.home-assistant.io/?u=frenck
-[frenck]: https://github.com/frenck
-[github-actions-shield]: https://github.com/hassio-addons/app-tailscale/workflows/CI/badge.svg
-[github-actions]: https://github.com/hassio-addons/app-tailscale/actions
-[github-sponsors-shield]: https://frenck.dev/wp-content/uploads/2019/12/github_sponsor.png
-[github-sponsors]: https://github.com/sponsors/frenck
-[issue]: https://github.com/hassio-addons/app-tailscale/issues
-[license-shield]: https://img.shields.io/github/license/hassio-addons/app-tailscale.svg
-[maintenance-shield]: https://img.shields.io/maintenance/yes/2026.svg
-[patreon-shield]: https://frenck.dev/wp-content/uploads/2019/12/patreon.png
-[patreon]: https://www.patreon.com/frenck
-[project-stage-shield]: https://img.shields.io/badge/project%20stage-experimental-yellow.svg
-[reddit]: https://reddit.com/r/homeassistant
-[releases-shield]: https://img.shields.io/github/release/hassio-addons/app-tailscale.svg
-[releases]: https://github.com/hassio-addons/app-tailscale/releases
-[repository]: https://github.com/hassio-addons/repository
+This fork remains licensed under the [MIT License](LICENSE.md) and retains the
+original copyright and permission notice. Original project by Franck Nijhof and
+the Home Assistant Community Apps contributors.
