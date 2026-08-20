@@ -11,9 +11,10 @@ pull requests must be reviewed again if they change.
 - It includes upstream `main` through commit
   [`d491cfb`](https://github.com/hassio-addons/app-tailscale/commit/d491cfb8fd05e8eb5981f8ed3895a557809c4c2c),
   including Home Assistant base image `21.0.1` and Alpine 3.24 package updates.
-- Tailscale is pinned to `v1.102.2`, which was the release published on the
-  [official stable package index](https://pkgs.tailscale.com/stable/) at audit
-  time.
+- At the initial audit, Tailscale was pinned to `v1.102.2`, which was the
+  release published on the
+  [official stable package index](https://pkgs.tailscale.com/stable/) at that
+  time. Subsequent dependency-only updates are recorded in the app changelog.
 - The original [MIT license](LICENSE.md), copyright notice, commit authorship,
   and upstream attribution are retained.
 
