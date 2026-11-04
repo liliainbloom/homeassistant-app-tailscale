@@ -13,11 +13,11 @@ tailnet. The app supports `aarch64` and `amd64` Home Assistant systems.
 
 ## What is in this fork?
 
-Release `0.29.7` keeps the upstream `v0.28.1` lineage, incorporates the useful
-changes from the upstream `main` branch, and packages Tailscale `1.104.4` from
+Release `0.29.8` keeps the upstream `v0.28.1` lineage, incorporates the useful
+changes from the upstream `main` branch, and packages Tailscale `1.104.5` from
 the official stable archives with pinned SHA-256 verification. The upstream
 baseline and pull-request audit were completed on 2026-08-09; the Tailscale
-binaries were refreshed on 2026-10-28.
+binaries were refreshed on 2026-11-04.
 
 The open upstream pull requests were reviewed individually. Compatible fixes
 were integrated, interacting changes were reconciled, and unfinished or unsafe
